@@ -4,8 +4,13 @@ import { getMeals } from "../../utils/meals";
 import { Suspense } from "react";
 import Loading from "@/components/Loading";
 
-export default async function Meals() {
-    const meals = await getMeals();
+async function Meals(){
+    const meals=await getMeals();
+    return <MealsGrid meals={meals} />;
+
+}
+
+export default  function MealPage() {
     return (
         <div className="flex flex-col w-full h-full bg-gray-800 items-center text-orange-500">
 
@@ -21,15 +26,10 @@ export default async function Meals() {
                     Share Your Meals HERE
                 </p>
             </Link>
-
-            
-
-
-{/* Add Suspense here */}
-            <Suspense fallback={<Loading/>} >
-            <MealsGrid meals={meals} />
+            <Suspense fallback={<Loading />}>
+                <Meals />
             </Suspense>
-            
+
 
         </div>
     );

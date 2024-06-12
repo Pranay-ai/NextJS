@@ -1,21 +1,10 @@
+
 import ImagePicker from "@/components/ImagePicker";
+import { shareMeal } from "@/utils/server-actions";
+import ShareMealsForm from "@/components/ShareMealsForm";
 
 export default function ShareMealPage() {
 
-  async function shareMeal(formData:FormData){
-    "use server";
-
-    // const meal={
-    //   title:formData.get("title") as string, 
-    //   summary:formData.get("summary") as string,
-    //   instructions:formData.get("instructions") as string,
-    //   image:formData.get("image") as string,
-    //   name:formData.get("name") as string,
-    //   creator_email:formData.get("email") as string,
-    // }
-    console.log(formData);
-
-  }
 
 
   return (
@@ -86,12 +75,7 @@ export default function ShareMealPage() {
             <ImagePicker />
 
           <div className="text-center mt-6">
-            <button
-              type="submit"
-              className="px-6 py-2 bg-orange-500 text-white font-semibold rounded-md shadow-md hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500"
-            >
-              Share Meal
-            </button>
+            <ShareMealsForm/>
           </div>
         </form>
       </main>
