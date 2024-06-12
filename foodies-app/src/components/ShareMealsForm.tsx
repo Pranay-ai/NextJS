@@ -1,6 +1,4 @@
 "use client";
-import ImagePicker from "./ImagePicker";
-import { shareMeal } from "../utils/server-actions";
 import { useFormStatus } from "react-dom";
 export default function ShareMealsForm() {
     const{pending}=useFormStatus()
