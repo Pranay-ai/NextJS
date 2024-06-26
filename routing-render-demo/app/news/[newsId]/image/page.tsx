@@ -1,13 +1,12 @@
-import { DUMMY_NEWS } from "@/utils/dummy-data";
+import { getNewsItem } from "@/utils/news";
 import Image from 'next/image'; // Import Image component from Next.js
 
-export default function NewsImage({ params }: { params: { newsId: string } }) {
-    console.log("params");
-    console.log(params);
+export default async function NewsImage({ params }: { params: { newsId: string } }) {
 
-    const news = DUMMY_NEWS.find((news) => news.slug === params.newsId);
-    console.log("news");
-    console.log(news);
+    console.log("ACTUAL PAGE")
+
+    const news =await getNewsItem(params.newsId);
+
 
     return (
         <div className="bg-gray-800 h-screen flex flex-col gap-6 pl-5">

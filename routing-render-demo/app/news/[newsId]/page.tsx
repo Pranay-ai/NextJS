@@ -1,8 +1,8 @@
-import { DUMMY_NEWS } from "@/utils/dummy-data";
+import { getNewsItem } from "@/utils/news";
 import Image from "next/image";
 import Link from "next/link";
-export default function NewsDetail({params}: {params: {newsId: string}}){
-    const news= DUMMY_NEWS.find((news) => news.slug === params.newsId);
+export default async function NewsDetail({params}: {params: {newsId: string}}){
+    const news=await getNewsItem(params.newsId)
     return ( 
         <div className="bg-gray-800 h-screen flex flex-col gap-6 pl-5 ">
             <div className="w-1/3 h-96 relative ">
