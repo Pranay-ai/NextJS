@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { uploadImageFirebase } from "@/lib/firebase-actions";
 import { getImageUrl } from "@/lib/firebase-actions";
 import {updatePostLikeStatus} from "@/lib/posts";
+import { revalidatePath } from "next/cache";
 
 export async function createPost(prevState, formData) {
 
@@ -38,11 +39,13 @@ export async function createPost(prevState, formData) {
       content,
       userId: 1,
     });
+    revalidatePath("/","layout")
     redirect("/feed");
   }
 
 
 export async function likePost(postId){
     await updatePostLikeStatus(postId,2)
-    redirect("/feed");
+    revalidatePath("/",'layout')
+
 }
